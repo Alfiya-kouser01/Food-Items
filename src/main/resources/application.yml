@@ -1,0 +1,30 @@
+server:
+  port: 9092
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka/  # Corrected URL for Eureka server
+    register-with-eureka: true  # Ensures the client registers with Eureka
+    fetch-registry: true  # Fetches registry info from Eureka
+
+spring:
+  application:
+    name: FOOD-CATALOGUE-SERVICE  # The name with which this service will be registered in Eureka
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/foodcataloguedb
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+    org.springframework.web: DEBUG
+
