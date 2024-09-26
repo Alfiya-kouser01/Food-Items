@@ -20,6 +20,7 @@ import org.springframework.core.env.Environment;
 public class FoodItemService {
     @Autowired
     FoodRepository foodRepository;
+
     @Autowired
     RestTemplate restTemplate;
 
@@ -58,6 +59,8 @@ public class FoodItemService {
         log.info("Making API call to URL: {}", url);
 
         try {
+//            String url_1 = "http://localhost:9091/restaurant/fetchFoodMessage/" + restaurantID;
+//            String restaurantDetails = restTemplate.getForObject(url_1, String.class);
             Restaurant restaurantDetails = restTemplate.getForObject(url, Restaurant.class);
             log.info("API call successful, restaurant details: {}", restaurantDetails);
             return restaurantDetails;
